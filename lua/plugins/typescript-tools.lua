@@ -11,11 +11,6 @@ return {
         quotePreference = "auto",
         allowImportingTsExtensions = true,
       },
-      tsserver_format_options = {
-        allowIncompleteCompletions = false,
-        allowRenameOfImportPath = true,
-      },
     },
   },
 }
-
