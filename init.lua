@@ -46,24 +46,40 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.00
   vim.g.neovide_input_macos_option_key_is_meta = 'both'
 
+  local function paste()
+      vim.opt.paste = true
+      return '"+P'
+  end
+
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
   vim.keymap.set('v', '<D-c>', '"+y') -- Copy
-  vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
-  vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
-  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
-  vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
+  --vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  --vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
+  --vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
+  --vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
+
+  vim.keymap.set('n', '<D-v>', paste , { expr = true })
+  vim.keymap.set('v', '<D-v>', paste , { expr = true })
+  vim.keymap.set('i', '<D-v>', function() vim.opt.paste = true; return '<ESC>l"+Pli' end, { expr = true }) -- Paste insert mode
+  vim.keymap.set('c', '<D-v>', function() vim.opt.paste = true; return '<C-R>+' end, { expr = true }) -- Paste command mode
+
+  vim.api.nvim_create_autocmd("InsertLeave", {
+    callback = function()
+        vim.opt.paste = false
+      end,
+  })
 
   vim.keymap.set('n', '<D-t>', ':enew<CR>', { noremap = true, silent = true }) -- new
+  vim.keymap.set("n", "<D-a>", "ggVG", { desc = "Select All" })
 end
 
 -- Allow clipboard copy paste in neovim
-vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
 --vim.keymap.set('c', 'q', '<C-w><C-q>') -- Paste visual mode
-
 
 local function my_on_attach(bufnr)
   local api = require "nvim-tree.api"
@@ -81,20 +97,15 @@ end
 require("nvim-tree").setup {
   on_attach = my_on_attach,
   update_cwd = true,
+  filters = {
+    dotfiles = false,  -- Set to true to show hidden files
+    custom = {},      -- You can add any other custom filters here
+  },
   update_focused_file = {
     enable = true,
     update_cwd = true
   },
 }
-
-require("typescript-tools").setup {}
-
-vim.keymap.set("n", "<RightMouse>", function()
-  vim.cmd.exec '"normal! \\<RightMouse>"'
-
-  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
-  require("menu").open(options, { mouse = true })
-end, {})
 
 local actions = require("telescope.actions")
 require("telescope").setup({
@@ -106,5 +117,3 @@ require("telescope").setup({
     },
   },
 })
-
-

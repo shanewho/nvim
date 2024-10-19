@@ -22,3 +22,4 @@ end
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+lspconfig.ts_ls = function() end
