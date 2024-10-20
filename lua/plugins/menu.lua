@@ -1,3 +1,18 @@
+local debugMenu = {
+
+  {
+    name = "Toggle Breakpoint",
+    cmd = require("dap").toggle_breakpoint,
+    rtxt = "<leader>d",
+  },
+
+  {
+    name = "Start Debugging",
+    cmd = require("dap").continue,
+    rtxt = "<leader>c",
+  },
+}
+
 local lspMenu = {
 
   {
@@ -125,10 +140,14 @@ return {
       { name = "separator" },
 
       {
-        name = "  Lsp Actions",
-        hl = "Exblue",
-        --items = "lsp",
+        name = " Lsp Actions",
+        --hl = "Exblue",
         items = lspMenu,
+      },
+
+      {
+        name = " Debugger",
+        items = debugMenu,
       },
 
       {
