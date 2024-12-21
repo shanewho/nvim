@@ -3,7 +3,7 @@ return {
 
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -27,12 +27,12 @@ return {
     "notjedi/nvim-rooter.lua",
     lazy = false,
     config = function()
-      require("nvim-rooter").setup({
-        rooter_patterns = { '.git', '.hg', 'Makefile' },
-        trigger_patterns = { '*' },
+      require("nvim-rooter").setup {
+        rooter_patterns = { ".git", ".hg", "Makefile" },
+        trigger_patterns = { "*" },
         manual = false,
-        fallback_to_parent = false
-      })
+        fallback_to_parent = false,
+      }
     end,
   },
 

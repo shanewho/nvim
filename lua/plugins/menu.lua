@@ -67,6 +67,28 @@ local lspMenu = {
     cmd = vim.lsp.buf.code_action,
     rtxt = "<leader>ca",
   },
+
+  { name = "separator" },
+  {
+    name = "Add Missing Imports",
+    cmd = 'TSToolsAddMissingImports'
+  },
+  {
+    name = "Remove Unused Imports",
+    cmd = 'TSToolsRemoveUnused'
+  },
+  {
+    name = "Organize Imports",
+    cmd = 'TSToolsOrganizeImports'
+  },
+  {
+    name = "Sort Imports",
+    cmd = 'TSToolsSortImports'
+  },
+  {
+    name = "Add Missing Imports",
+    cmd = 'TSToolsFixAll'
+  },
 }
 return {
   "nvchad/menu",

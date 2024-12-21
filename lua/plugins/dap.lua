@@ -1,8 +1,8 @@
 return {
   "mfussenegger/nvim-dap",
+  "nvim-neotest/nvim-nio",
   dependencies = {
     "rcarriga/nvim-dap-ui",
-    "nvim-nio",
     "mxsdev/nvim-dap-vscode-js",
     { -- build debugger from source
       "microsoft/vscode-js-debug",
@@ -90,18 +90,18 @@ return {
         },
         -- only if language is javascript, offer this debug action
         language == "javascript"
-            and {
-              -- use nvim-dap-vscode-js's pwa-node debug adapter
-              type = "pwa-node",
-              -- launch a new process to attach the debugger to
-              request = "launch",
-              -- name of the debug action you have to select for this config
-              name = "Launch file in new node process",
-              -- launch current file
-              program = "${file}",
-              cwd = "${workspaceFolder}",
-            }
-          or nil,
+        and {
+          -- use nvim-dap-vscode-js's pwa-node debug adapter
+          type = "pwa-node",
+          -- launch a new process to attach the debugger to
+          request = "launch",
+          -- name of the debug action you have to select for this config
+          name = "Launch file in new node process",
+          -- launch current file
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        }
+        or nil,
       }
     end
 
