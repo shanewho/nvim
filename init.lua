@@ -110,6 +110,9 @@ require("nvim-tree").setup {
     dotfiles = false, -- Set to true to show hidden files
     custom = {}, -- You can add any other custom filters here
   },
+  git = {
+    enable = false,
+  },
   -- update_focused_file = {
   --   enable = true,
   --   update_cwd = true
@@ -126,3 +129,9 @@ require("telescope").setup {
     },
   },
 }
+
+--make it so quickfix window (gd) closes when you open a file
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "qf" },
+  command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]],
+})

@@ -71,23 +71,23 @@ local lspMenu = {
   { name = "separator" },
   {
     name = "Add Missing Imports",
-    cmd = 'TSToolsAddMissingImports'
+    cmd = "TSToolsAddMissingImports",
   },
   {
     name = "Remove Unused Imports",
-    cmd = 'TSToolsRemoveUnused'
+    cmd = "TSToolsRemoveUnused",
   },
   {
     name = "Organize Imports",
-    cmd = 'TSToolsOrganizeImports'
+    cmd = "TSToolsOrganizeImports",
   },
   {
     name = "Sort Imports",
-    cmd = 'TSToolsSortImports'
+    cmd = "TSToolsSortImports",
   },
   {
     name = "Add Missing Imports",
-    cmd = 'TSToolsFixAll'
+    cmd = "TSToolsFixAll",
   },
 }
 return {
@@ -95,6 +95,18 @@ return {
   lazy = false,
   config = function()
     local defaultMenu = {
+      {
+        name = "Aider File",
+        cmd = function()
+          -- vim.cmd "AiderTerminalToggle"
+          vim.defer_fn(function()
+            vim.cmd "AiderTerminalSend /reset"
+            --   vim.defer_fn(function()
+            --     vim.cmd "AiderQuickAddFile"
+            --   end, 100)
+          end, 500)
+        end,
+      },
       {
         name = "Tools",
         items = {

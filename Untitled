@@ -1,0 +1,20 @@
+{
+  "case": {
+    "caseId": "INV123456",
+    "customerName": "Sarah Johnson",
+    "customerEmail": "sarah.johnson@email.com",
+    "accountId": "ACC987654",
+    "accountType": "Mutual Fund",
+    "status": "In Progress",
+    "creationDate": "2023-10-01T09:15:00Z",
+    "lastUpdated": "2023-10-04T09:05:00Z",
+    "issueDescription": "Customer is experiencing trouble accessing her new mutual fund account set up last week. Needs assistance in resolving the issue.",
+    "escalationStatus": "Escalated to Technical Team",
+    "csrAssigned": {
+      "csrName": "Mike Thompson",
+      "csrEmail": "mike.thompson@investmentfirm.com",
+      "csrId": "CSR12345"
+    }e
+    "csrNotes": "Customer is somewhat frustrated but remains polite. Issue remains unresolved and requires continued follow-up with the technical team."
+  }
+}

@@ -2,8 +2,14 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = false, -- set this if you want to always pull the latest change
+  version = false, -- set this to "*" if you want to always pull the latest change, false to update on release
   opts = {
+    provider = "openai",
+    openai = {
+      model = "gpt-4o-mini",
+      timeout = 30000, -- Timeout in milliseconds
+      temperature = 0,
+    },
     -- add any opts here
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -21,6 +27,7 @@ return {
       "MeanderingProgrammer/render-markdown.nvim",
       opts = {
         file_types = { "markdown", "Avante" },
+        provider = "claude",
       },
       ft = { "markdown", "Avante" },
     },
