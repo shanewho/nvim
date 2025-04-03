@@ -1,8 +1,8 @@
 return {
-  lazy = false,
-  { "nvim-neotest/nvim-nio" },
   "mfussenegger/nvim-dap",
+  lazy = false,
   dependencies = {
+    "nvim-neotest/nvim-nio",
     "rcarriga/nvim-dap-ui",
     "mxsdev/nvim-dap-vscode-js",
     { -- build debugger from source
