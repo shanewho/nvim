@@ -1,6 +1,7 @@
 return {
+  lazy = false,
+  { "nvim-neotest/nvim-nio" },
   "mfussenegger/nvim-dap",
-  "nvim-neotest/nvim-nio",
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "mxsdev/nvim-dap-vscode-js",
@@ -49,7 +50,17 @@ return {
       adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
     }
 
-    for _, language in ipairs { "typescript", "javascript", "svelte" } do
+    local js_based_languages = {
+      "typescript",
+      "javascript",
+      "typescriptreact",
+      "javascriptreact",
+      "typescriptreact",
+      "typescript",
+      "vue",
+    }
+
+    for _, language in ipairs(js_based_languages) do
       require("dap").configurations[language] = {
         -- attach to a node process that has been started with
         -- `--inspect` for longrunning tasks or `--inspect-brk` for short tasks
