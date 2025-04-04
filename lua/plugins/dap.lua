@@ -4,11 +4,33 @@ return {
   dependencies = {
     "nvim-neotest/nvim-nio",
     "rcarriga/nvim-dap-ui",
-    { -- build debugger from source
+    { -- download and extract pre-built debugger
       "microsoft/vscode-js-debug",
-      build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+      build = function()
+        -- Extract URL from the AAAA comment
+        local url = "https://github.com/microsoft/vscode-js-debug/archive/refs/tags/v1.97.1.tar.gz"
+        local install_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"
+        
+        -- Create directory if it doesn't exist
+        vim.fn.mkdir(install_path, "p")
+        
+        -- Download and extract the tarball
+        vim.fn.system({
+          "curl", "-L", url, 
+          "-o", install_path .. "/vscode-js-debug.tar.gz"
+        })
+        
+        vim.fn.system({
+          "tar", "-xzf", 
+          install_path .. "/vscode-js-debug.tar.gz", 
+          "--strip-components=1",
+          "-C", install_path
+        })
+        
+        -- Clean up the tarball
+        vim.fn.delete(install_path .. "/vscode-js-debug.tar.gz")
+      end,
     },
-    -- AAAA=https://github.com/microsoft/vscode-js-debug/archive/refs/tags/v1.97.1.tar.gz
   },
   keys = {
     -- normal mode is default
