@@ -1,11 +1,13 @@
 local options = {
-  log_level = vim.log.levels.DEBUG,
+  --log_level = vim.log.levels.DEBUG,
   formatters_by_ft = {
     lua = { "stylua" },
-    css = { "prettierd", "prettier", stop_after_first = true },
-    html = { "prettierd", "prettier", stop_after_first = true },
-    typescript = { "prettierd", "prettier", stop_after_first = true },
-    javascript = { "prettierd", "prettier", stop_after_first = true },
+    css = { "prettierd", stop_after_first = true },
+    html = { "prettierd", stop_after_first = true },
+    typescript = { "prettierd", stop_after_first = true },
+    typescriptreact = { "prettierd", stop_after_first = true },
+    javascript = { "prettierd", stop_after_first = true },
+    markdown = { "prettierd", stop_after_first = true },
   },
   format_on_save = {
     --These options will be passed to conform.format()

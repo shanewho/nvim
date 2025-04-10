@@ -2,11 +2,6 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
---map("n", ";", ":", { desc = "CMD enter command mode" })
---map("i", "jk", "<ESC>")
-
-map("n", "<leader>ci", ":CodeCompanion<CR>", { noremap = true, silent = true })
-map("n", "<leader>c", ":CodeCompanionChat toggle<CR>", { noremap = true, silent = true })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>") -- Go to Definition
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>") -- Go to Implementation
@@ -28,3 +23,15 @@ map("n", "<leader>la", "<cmd>TSToolsAddMissingImports<cr>")
 vim.api.nvim_set_keymap("t", "<D-v>", '<C-M><C-n>"+pi', { noremap = true }) --Allow paste into floating term
 
 map("n", "<leader>tf", "<cmd>NvimTreeFindFile<cr>")
+
+vim.keymap.set("n", "<leader>te", function()
+  require("pretty-ts-errors").show_formatted_error()
+end, { desc = "Show TS error" })
+-- Show all errors in file
+vim.keymap.set("n", "<leader>tE", function()
+  require("pretty-ts-errors").open_all_errors()
+end, { desc = "Show all TS errors" })
+-- Toggle auto-display
+vim.keymap.set("n", "<leader>tt", function()
+  require("pretty-ts-errors").toggle_auto_open()
+end, { desc = "Toggle TS error auto-display" })

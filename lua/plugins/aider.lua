@@ -3,11 +3,6 @@ return {
   cmd = {
     "AiderTerminalToggle",
   },
-  args = {
-    "--no-stream",
-    "--sonnet",
-    "--cache-prompts",
-  },
   keys = {
     { "<leader>a/", "<cmd>AiderTerminalToggle<cr>", desc = "Open Aider" },
     { "<leader>as", "<cmd>AiderTerminalSend<cr>", desc = "Send to Aider", mode = { "n", "v" } },
@@ -23,6 +18,13 @@ return {
     "nvim-telescope/telescope.nvim",
     --- The below dependencies are optional
     "catppuccin/nvim",
+  },
+  opts = {
+    args = {
+      "--no-stream",
+      "--model gemini-2.5-pro",
+      "--cache-prompts",
+    },
   },
   config = true,
 }

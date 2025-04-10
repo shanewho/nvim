@@ -1,3 +1,5 @@
+local install_path = vim.fn.stdpath "data" .. "/lazy/vscode-js-debug"
+
 return {
   "mfussenegger/nvim-dap",
   lazy = false,
@@ -8,26 +10,23 @@ return {
       "microsoft/vscode-js-debug",
       build = function()
         -- Extract URL from the AAAA comment
-        local url = "https://github.com/microsoft/vscode-js-debug/archive/refs/tags/v1.97.1.tar.gz"
-        local install_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"
-        
-        -- Create directory if it doesn't exist
+        local url = "https://github.com/microsoft/vscode-js-debug/releases/download/v1.97.1/js-debug-dap-v1.97.1.tar.gz"
+        --local install_path = vim.fn.stdpath "data" .. "/lazy/vscode-js-debug"
         vim.fn.mkdir(install_path, "p")
-        
-        -- Download and extract the tarball
-        vim.fn.system({
-          "curl", "-L", url, 
-          "-o", install_path .. "/vscode-js-debug.tar.gz"
-        })
-        
-        vim.fn.system({
-          "tar", "-xzf", 
-          install_path .. "/vscode-js-debug.tar.gz", 
-          "--strip-components=1",
-          "-C", install_path
-        })
-        
-        -- Clean up the tarball
+        vim.fn.system {
+          "curl",
+          "-L",
+          url,
+          "-o",
+          install_path .. "/vscode-js-debug.tar.gz",
+        }
+        vim.fn.system {
+          "tar",
+          "-xzf",
+          install_path .. "/vscode-js-debug.tar.gz",
+          "-C",
+          install_path,
+        }
         vim.fn.delete(install_path .. "/vscode-js-debug.tar.gz")
       end,
     },
@@ -85,7 +84,8 @@ return {
       executable = {
         command = "node",
         args = {
-          "/Users/shane/Downloads/js-debug/src/dapDebugServer.js",
+          install_path .. "/js-debug/src/dapDebugServer.js",
+          --"/Users/shane/Downloads/js-debug/src/dapDebugServer.js",
           "9231",
         },
       },
