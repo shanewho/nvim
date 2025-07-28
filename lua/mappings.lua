@@ -24,6 +24,9 @@ vim.api.nvim_set_keymap("t", "<D-v>", '<C-M><C-n>"+pi', { noremap = true }) --Al
 
 map("n", "<leader>tf", "<cmd>NvimTreeFindFile<cr>")
 
+map("n", "<leader>s", "<cmd>split<cr>")
+map("n", "<leader>q", "<cmd>close<cr>")
+
 vim.keymap.set("n", "<leader>te", function()
   require("pretty-ts-errors").show_formatted_error()
 end, { desc = "Show TS error" })

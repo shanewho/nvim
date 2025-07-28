@@ -40,7 +40,7 @@ return {
       end,
     },
     {
-      "<leader>c",
+      "<leader>dc",
       function()
         require("dap").continue()
       end,

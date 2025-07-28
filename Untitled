@@ -1,20 +1,49 @@
 {
-  "case": {
-    "caseId": "INV123456",
-    "customerName": "Sarah Johnson",
-    "customerEmail": "sarah.johnson@email.com",
-    "accountId": "ACC987654",
-    "accountType": "Mutual Fund",
-    "status": "In Progress",
-    "creationDate": "2023-10-01T09:15:00Z",
-    "lastUpdated": "2023-10-04T09:05:00Z",
-    "issueDescription": "Customer is experiencing trouble accessing her new mutual fund account set up last week. Needs assistance in resolving the issue.",
-    "escalationStatus": "Escalated to Technical Team",
-    "csrAssigned": {
-      "csrName": "Mike Thompson",
-      "csrEmail": "mike.thompson@investmentfirm.com",
-      "csrId": "CSR12345"
-    }e
-    "csrNotes": "Customer is somewhat frustrated but remains polite. Issue remains unresolved and requires continued follow-up with the technical team."
-  }
+  "token": "l2mYHEN2ab9QkPYJR5jPy6QR",
+  "team_id": "T08HYRFV084",
+  "context_team_id": "T08HYRFV084",
+  "context_enterprise_id": null,
+  "api_app_id": "A08HDQ70M8X",
+  "event": {
+    "user": "U08HYRFV0A0",
+    "type": "message",
+    "ts": "1753151672.318029",
+    "client_msg_id": "d0a07efd-a41a-44ea-b072-cc0f2c69550b",
+    "text": "test, ignore this",
+    "team": "T08HYRFV084",
+    "blocks": [
+      {
+        "type": "rich_text",
+        "block_id": "7mi2g",
+        "elements": [
+          {
+            "type": "rich_text_section",
+            "elements": [
+              {
+                "type": "text",
+                "text": "test, ignore this"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "channel": "D08JGNMC2DN",
+    "event_ts": "1753151672.318029",
+    "channel_type": "im"
+  },
+  "type": "event_callback",
+  "event_id": "Ev096UUKPCDQ",
+  "event_time": 1753151672,
+  "authorizations": [
+    {
+      "enterprise_id": null,
+      "team_id": "T08HYRFV084",
+      "user_id": "U08JGNMBEJC",
+      "is_bot": true,
+      "is_enterprise_install": false
+    }
+  ],
+  "is_ext_shared_channel": false,
+  "event_context": "4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMDhIWVJGVjA4NCIsImFpZCI6IkEwOEhEUTcwTThYIiwiY2lkIjoiRDA4SkdOTUMyRE4ifQ"
 }
