@@ -19,6 +19,7 @@ map("n", "<leader>r", require "nvchad.lsp.renamer")
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)
 map("n", "gr", vim.lsp.buf.references)
 map("n", "<leader>la", "<cmd>TSToolsAddMissingImports<cr>")
+map("n", "<leader>n", "<cmd>cnext<cr>")
 
 vim.api.nvim_set_keymap("t", "<D-v>", '<C-M><C-n>"+pi', { noremap = true }) --Allow paste into floating term
 

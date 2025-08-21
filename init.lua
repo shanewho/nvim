@@ -77,8 +77,11 @@ if vim.g.neovide then
 end
 
 --Show errors in window
-vim.diagnostic.config { virtual_text = false }
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+--vim.diagnostic.config { virtual_text = false }
+--vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.keymap.set("n", "<leader>l", function()
+  vim.diagnostic.open_float(nil, { focus = false })
+end, { desc = "Open diagnostic float" })
 
 -- Allow clipboard copy paste in neovim
 --vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true })
