@@ -21,7 +21,7 @@ map("n", "gr", vim.lsp.buf.references)
 map("n", "<leader>la", "<cmd>TSToolsAddMissingImports<cr>")
 map("n", "<leader>n", "<cmd>cnext<cr>")
 
-vim.api.nvim_set_keymap("t", "<D-v>", '<C-M><C-n>"+pi', { noremap = true }) --Allow paste into floating term
+vim.api.nvim_set_keymap("t", "<D-v>", '<C-\\><C-n>"+pi', { noremap = true }) --Allow paste into floating term
 
 map("n", "<leader>tf", "<cmd>NvimTreeFindFile<cr>")
 
