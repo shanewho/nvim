@@ -39,10 +39,12 @@ Plugins are organized in `lua/plugins/` with each major functionality in separat
 
 ### Plugin Development Pattern
 When adding new plugins:
-1. Create new file in `lua/plugins/` or add to existing files
-2. Follow lazy.nvim plugin specification format
-3. Use lazy-loading with appropriate triggers (ft, keys, event)
-4. Keep configurations modular and specific to plugin functionality
+1. **ALWAYS create new files** in `lua/plugins/` as siblings to existing plugin files (e.g., `typescript-tools.lua`, `dap.lua`)
+2. **NEVER modify existing plugin files** unless specifically updating that plugin's configuration
+3. Follow lazy.nvim plugin specification format with proper return table structure
+4. Use lazy-loading with appropriate triggers (ft, keys, event)
+5. Keep configurations modular and specific to plugin functionality
+6. Name files descriptively based on the plugin's primary function
 
 ### Configuration Modifications
 - Theme changes: Modify `lua/chadrc.lua`

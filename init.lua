@@ -80,8 +80,13 @@ end
 --vim.diagnostic.config { virtual_text = false }
 --vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 vim.keymap.set("n", "<leader>l", function()
-  vim.diagnostic.open_float(nil, { focus = false })
-end, { desc = "Open diagnostic float" })
+  local ft = vim.bo.filetype
+  if ft == "typescript" or ft == "typescriptreact" then
+    vim.cmd("PrettyTsError")
+  else
+    vim.diagnostic.open_float(nil, { focus = false })
+  end
+end, { desc = "Show errors (PrettyTsError for TS, diagnostic float for others)" })
 
 -- Allow clipboard copy paste in neovim
 --vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true })
