@@ -77,12 +77,13 @@ if vim.g.neovide then
 end
 
 --Show errors in window
---vim.diagnostic.config { virtual_text = false }
---vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.diagnostic.config { virtual_text = false }
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 vim.keymap.set("n", "<leader>l", function()
   local ft = vim.bo.filetype
   if ft == "typescript" or ft == "typescriptreact" then
-    vim.cmd("PrettyTsError")
+    --vim.cmd("PrettyTsError")
+    vim.diagnostic.open_float(nil, { focus = false })
   else
     vim.diagnostic.open_float(nil, { focus = false })
   end

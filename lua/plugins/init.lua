@@ -2,6 +2,7 @@ return {
   { "folke/which-key.nvim", enabled = false },
   { "windwp/nvim-autopairs", enabled = false },
   { "hrsh7th/nvim-cmp", enabled = false },
+  { "NvChad/nvim-colorizer.lua", enabled = false },
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
@@ -17,6 +18,7 @@ return {
       keymap = {
         preset = "enter",
         ["<tab>"] = { "accept", "fallback" },
+        ["."] = { "accept", "fallback" },
       },
       appearance = {
         use_nvim_cmp_as_default = true,
