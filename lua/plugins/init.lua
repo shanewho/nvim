@@ -18,7 +18,14 @@ return {
       keymap = {
         preset = "enter",
         ["<tab>"] = { "accept", "fallback" },
-        ["."] = { "accept", "fallback" },
+        --["."] = { "accept", "fallback" },
+      },
+      completion = {
+        list = {
+          selection = {
+            --preselect = false,
+          },
+        },
       },
       appearance = {
         use_nvim_cmp_as_default = true,
